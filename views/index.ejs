@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FX Currency Converter</title>
+    <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body>
+    <div id="frame">
+        <div id="background">
+            <div id="container">
+                <div id="wrapper">
+                    <h2>FX Currency Converter</h2>
+                    <p>Check live foreign currency exchange rates</p>
+                    <div id="app">
+                        <div id="app-wrapper">
+                            <div>
+                                <form action="/convert" method="post">
+                                    <div id="input-values">
+                                        <div id="amount-input">
+                                            <h4>Amount</h4>
+                                            <label for="amount-name">
+                                            <div id="amount-text">
+                                                <% if (locals.content) { %>
+                                                    <span><%= content.symbol[content.base] %></span>
+                                                    <input type="text" name="amount" value="<%= content.amount %>" min="0.01" step="0.01">
+                                                    <p></p>
+                                                <% } else { %>
+                                                    <span>$</span>
+                                                    <input type="text" name="amount" value="1.00" min="0.01" step="0.01" id="amount-name">
+                                                    <p></p>
+                                                <% } %>
+                                            </div>
+                                            </label>
+                                        </div>
+                                        <div id="base-input">
+                                            <h4>From</h4>
+                                            <div>
+                                                <% if (locals.content) { %>
+                                                    <img src="<%= "/images/flags/" + content.flag[content.base] + ".svg" %>">
+                                                    <select id="base-select" name="base">
+                                                        <option value="USD" <%= "USD" === content.base ? "selected" : "" %>>USD - US Dollar</option>
+                                                        <option value="EUR" <%= "EUR" === content.base ? "selected" : "" %>>EUR - Euro</option>
+                                                        <option value="GBP" <%= "GBP" === content.base ? "selected" : "" %>>GBP - British Pound</option>
+                                                        <option value="CAD" <%= "CAD" === content.base ? "selected" : "" %>>CAD - Canadian Dollar</option>
+                                                        <option value="AUD" <%= "AUD" === content.base ? "selected" : "" %>>AUD - Australian Dollar</option>
+                                                        <option value="JPY" <%= "JPY" === content.base ? "selected" : "" %>>JPY - Japanese Yen</option>
+                                                        <option value="NGN" <%= "NGN" === content.base ? "selected" : "" %>>NGN - Nigerian Naira</option>
+                                                        <option value="ZAR" <%= "ZAR" === content.base ? "selected" : "" %>>ZAR - South African Rand</option>
+                                                        <option value="AED" <%= "AED" === content.base ? "selected" : "" %>>AED - Emirati Dirham</option>
+                                                    </select>
+                                                <% } else { %>
+                                                    <img src="/images/flags/us.svg">  
+                                                    <select id="base-select" name="base">
+                                                        <option value="USD" selected>USD - US Dollar</option>
+                                                        <option value="EUR">EUR - Euro</option>
+                                                        <option value="GBP">GBP - British Pound</option>
+                                                        <option value="CAD">CAD - Canadian Dollar</option>
+                                                        <option value="AUD">AUD - Australian Dollar</option>
+                                                        <option value="JPY">JPY - Japanese Yen</option>
+                                                        <option value="NGN">NGN - Nigerian Naira</option>
+                                                        <option value="ZAR">ZAR - South African Rand</option>
+                                                        <option value="AED">AED - Emirati Dirham</option>
+                                                    </select> 
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                        <div id="switch-currency">
+                                            <img src="/images/icons/swap.svg">
+                                        </div>
+                                        <div id="target-input">
+                                            <h4>To</h4>
+                                            <div>
+                                                <% if (locals.content) { %>
+                                                    <img src="<%= "/images/flags/" + content.flag[content.target] + ".svg" %>">
+                                                    <select id="target-select" name="target">
+                                                        <option value="USD" <%= "USD" === content.target ? "selected" : "" %>>USD - US Dollar</option>
+                                                        <option value="EUR" <%= "EUR" === content.target ? "selected" : "" %>>EUR - Euro</option>
+                                                        <option value="GBP" <%= "GBP" === content.target ? "selected" : "" %>>GBP - British Pound</option>
+                                                        <option value="CAD" <%= "CAD" === content.target ? "selected" : "" %>>CAD - Canadian Dollar</option>
+                                                        <option value="AUD" <%= "AUD" === content.target ? "selected" : "" %>>AUD - Australian Dollar</option>
+                                                        <option value="JPY" <%= "JPY" === content.target ? "selected" : "" %>>JPY - Japanese Yen</option>
+                                                        <option value="NGN" <%= "NGN" === content.target ? "selected" : "" %>>NGN - Nigerian Naira</option>
+                                                        <option value="ZAR" <%= "ZAR" === content.target ? "selected" : "" %>>ZAR - South African Rand</option>
+                                                        <option value="AED" <%= "AED" === content.target ? "selected" : "" %>>AED - Emirati Dirham</option>
+                                                    </select>
+                                                <% } else { %>
+                                                    <img src="/images/flags/ng.svg"> 
+                                                    <select id="target-select" name="target">
+                                                        <option value="USD">USD - US Dollar</option>
+                                                        <option value="EUR">EUR - Euro</option>
+                                                        <option value="GBP">GBP - British Pound</option>
+                                                        <option value="CAD">CAD - Canadian Dollar</option>
+                                                        <option value="AUD">AUD - Australian Dollar</option>
+                                                        <option value="JPY">JPY - Japanese Yen</option>
+                                                        <option value="NGN" selected>NGN - Nigerian Naira</option>
+                                                        <option value="ZAR">ZAR - South African Rand</option>
+                                                        <option value="AED">AED - Emirati Dirham</option>
+                                                    </select>  
+                                                <% } %>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="result-values">
+                                        <% if (locals.content) { %>
+                                            <h4> <%= content.amount %> <%= content.currency[content.base] %> = </h4>
+                                            <h2> <%= content.result %> <%= content.currency[content.target] %> </h2>
+                                            <% if (locals.content.numAmount > 1) { %>
+                                                <p> 1 <%= content.base %> = <%= content.baseRate %> <%= content.target %> </p>
+                                            <% } %>
+                                            <p> 1 <%= content.target %> = <%= content.targetRate %> <%= content.base %> </p>
+                                        <% } %>
+                                    </div>
+                                    <div id="submit-section">
+                                        <div id="info-update">
+                                            <% if (locals.content) { %>
+                                                <div id="info-wrapper">
+                                                    <div id="info">
+                                                        <span>i</span>
+                                                    </div>
+                                                    <div>
+                                                        <p>Last Updated: <%= content.lastUpdate %></p>
+                                                        <p>Next Update: <%= content.nextUpdate %></p>
+                                                    </div>
+                                                </div>
+                                            <% } %>
+                                        </div>
+                                        <div>
+                                            <input type="submit" value="Convert">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="white-space"></div>
+    </div>
+
+    <script src="/scripts/app.js"></script>
+</body>
+</html>

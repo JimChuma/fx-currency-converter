@@ -1,0 +1,322 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+
+/* CSS File for "index.ejs" */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+h4 {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+#frame {
+    height: 100dvh;
+}
+
+#background  {
+    height: 50%;
+    background-color: blue;
+    position: relative;
+}
+
+#container {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: start;
+    top: 25%;
+    width: 100%;
+    margin: auto;
+}
+
+#wrapper {
+    width: 95%;
+    max-width: 1170px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#wrapper > h2, 
+#wrapper > p {
+    color: white;
+}
+
+#wrapper > h2 {
+    font-size: 2rem;
+}
+
+#app {
+    background-color: white;
+    box-shadow: 0px 5px 20px 0px rgba(35, 55, 80, 0.3);
+    width: 100%;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+#app-wrapper {
+    width: 90%;
+    margin: 60px auto;
+}
+
+#input-values {
+    display: flex;
+    justify-content: space-between;
+    align-items: end;
+}
+
+#amount-text {
+    background-color: white;
+    border: 1px solid rgba(35, 55, 80, 0.3);
+    box-shadow: 0px 5px 20px -8px rgba(93, 121, 155, 0.3);
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 5px;
+    width: 276px;
+    display: flex;
+    gap: 5px;
+}
+
+#amount-text span {
+    font-size: 1.2rem;
+}
+
+#amount-text input {
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    width: 100%;
+}
+
+#base-input > div,
+#target-input >div {
+    margin-top: 5px;
+    padding: 0 10px;
+    background-color: white;
+    border: 1px solid rgba(35, 55, 80, 0.3);
+    box-shadow: 0px 5px 20px -8px rgba(93, 121, 155, 0.3);
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    height: 49.6px;
+}
+
+#base-select,
+#target-select {
+    font-size: 1.2rem;
+    border: none;
+    height: 100%;
+    outline: none;
+    cursor: pointer;
+    background-color: white;
+}
+
+#base-input #base-select option {
+    border: none;
+    outline: none;
+}
+
+#base-input img, 
+#target-input img {
+    height: 1.2rem;
+}
+
+#switch-currency {
+    background-color: white;
+    border-radius: 50%;
+    border: 1px solid rgba(35, 55, 80, 0.3);
+    box-shadow: 0px 5px 20px -8px rgba(93, 121, 155, 0.3);
+    width: 49.6px;
+    height: 49.6px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+#switch-currency:active {
+    border-color: rgb(6, 118, 255);
+}
+
+#switch-currency img {
+    height: 1.2rem;
+    cursor: pointer;
+}
+
+#result-values {
+    margin: 40px 0 20px;
+}
+
+#result-values h2 {
+    font-size: 2.1rem;
+    padding: 5px 0;
+}
+
+#result-values h4 {
+    font-size: 1.1rem;
+}
+
+#result-values p {
+    font-size: 1rem;
+}
+
+
+
+#submit-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#submit-section p {
+    font-size: 0.7rem;
+}
+
+#info-update {
+    background-color: rgb(225, 239, 255);
+    border-radius: 5px;
+    padding: 10px 0;
+}
+
+#info-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin: 0 18px;
+}
+
+#info {
+    border: 1px solid black;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#info-wrapper span {
+    font-family: "Space Mono", monospace;
+}
+
+#submit-section input {
+    padding: 10px 20px;
+    border-radius: 5px;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 49.6px;
+    width: 196px;
+    font-size: 1.1rem;
+    background-color: rgb(6, 118, 255);
+    color: white;
+    margin-top: 10px;
+}
+
+#submit-section input:hover {
+    background-color: rgb(6, 139, 255);
+}
+
+#submit-section input:active {
+    background-color: rgb(6, 77, 255);
+}
+
+
+/* Use Media Queries for responsive design */
+@media only screen and (max-width: 1350px) {
+    #frame {
+        min-height: 910px;
+    }
+
+    #container {
+        top: 15%;
+    }
+
+    #wrapper {
+        max-width: 840px;
+    }
+
+    #input-values {
+        display: grid;
+        grid-template-columns: auto auto auto;
+        gap: 30px;
+    }
+
+    #amount-input {
+        grid-column: 1 / 4;
+    }
+
+    #amount-text {
+        width: 313px;
+    }
+
+    #submit-section {
+        flex-direction: column;
+        align-items: start;
+    }
+
+    #submit-section input {
+        margin-top: 30px;
+    }
+}
+
+@media only screen and (max-width: 1100px) {
+    #frame {
+        min-height: 1120px;
+    }
+
+    #container {
+        top: 15%;
+    }
+
+    #wrapper {
+        max-width: 680px;
+    }
+
+    #base-input,
+    #switch-currency,
+    #target-input {
+        grid-column: 1 / 4;
+    }
+
+    #amount-text,
+    #base-select,
+    #target-select {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 640px) {
+    #frame {
+        min-height: 1240px;
+    }
+
+    #container {
+        top: 10%;
+    }
+
+    #wrapper > h2, 
+    #wrapper > p {
+        padding: 0 10px;
+    }
+
+    #info-wrapper span {
+        width: 20px;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    #result-values h2 {
+        font-size: 1.6rem;
+    }
+}
